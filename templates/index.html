@@ -1,305 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
- 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- /* <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>*/
+    <title>Prognosis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="./static/style.css">
+    <style>
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
 
+html { width: 100%; height:100%; }
 
-
-  <title>HeartCheck</title>
-</head>
-	
-
-<style>
-footer .disclaimer {
+body {
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+	background: #092756;
+	color: #fff;
+	font-size: 18px;
+	text-align:center;
+	letter-spacing:1.2px;
 }
-
-/* Results Page */
-.results {
+.login {
+  max-width: 400px;
+  width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
-.results .results-main {
-  font-size: 190px;
-  display: flex;
-  justify-content: center;
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+input {
+	margin-bottom: 10px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 18px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
 }
-
-.results .results-main .results-icon {
-  /* display: inline-block; */
-}
-
-.results .results-main .results-pct {
-  display: inline-block;
-  font-weight: bold;
-  margin-left: 20px;
-}
-
-.results .results-text {
-  text-align: center;
-  max-width: 380px;
-  margin: 20px auto 0;
-}
-
-
-
-.results .back-button {
-  margin-top: 50px;
-}
-
-/* Results Page: Input Values Section */
-.input-values {
-  margin-bottom: 20px;
-}
-
-.input-values > div {
-  margin-bottom: 20px;
-}
-
-/* Center list of tags */
-.input-values .field.is-grouped {
-  justify-content: center;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .results .results-main {
-    font-size: 80px;
-  }
-}
-
-
-
-	</style>
-
-
- <!--<section class="hero is-warning is-bold"> -->
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+    </style>
+</head>
 <body>
-	
-    <div class="hero-body">
-      <div class="container">
-        
-          <img src="./logo-text.png" alt="HeartCheck"  width="1280vh" height="200vh">
-        
-      </div>
-    </div>
-  
-  <div 
-  <section id="img" class="section">
-    
-    <div class="container" >
-     <p style="position: absolute;bottom: 50%,top: 50%,transform: translate(-50%,50%);">
-      <h1 class="title is-size-3-tablet is-size-4-mobile has-text-centered">
-        <i class="fas fa-heartbeat"></i>
-       
-        HeartCheck Monitor
-      </h1>
 
-    
-    </div>
-   </p>
-  </section>
+ <div class="login">
+	<h3 >Prognosis App</h3>
 
-
-</div>
-
-
-
-
-
-
-
-<form method="post" action="./result.html">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <center><p>Keep your cholesterol value ready for efficient risk calculation</p></center></br></br>
-      
-
-      <div class="columns is-mobile">
-        <div class="column">
-          <div class="field">
-            <label class="label">Age</label>
-            <div class="control">
-              <input class="input" name="age" type="number" min="1", max="110" placeholder="Enter age" value="{{ form_values['age'] }}" required>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <label class="label">Blood Pressure</label>
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <input class="input" type="number" name="bp_systolic" min="100" max="180" placeholder="Systolic" value="{{ form_values['bp_systolic'] }}" required>
-              </div>
-              <div class="control">
-                <a class="button is-static">/</a>
-              </div>
-              <div class="control is-expanded">
-                <input class="input" type="number" name="bp_diastolic" min="70" max="120" placeholder="Diastolic" value="{{ form_values['bp_diastolic'] }}" required>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns is-mobile">
-        <div class="column">
-          <div class="field">
-            <label class="label">Weight (kg)</label>
-            <div class="control">
-              <input class="input" name="weight_kg" type="number" min="0" , max="250" placeholder="Enter weight in kg" value="{{ form_values['weight_kg'] }}" required>
-            </div>
-            <p class="help"><a href="https://www.rapidtables.com/convert/weight/pound-to-kg.html" target="_blank">Converter: lb to kg</a></p>
-          </div>
+    <form action="{{ url_for('predict')}}" method="post">
+<br>
+    	<input style="	width: 100%;" type="text" name="Secondary School Percentage" placeholder="Secondary School Percentage" required="required" /><br>
+        <input style="width: 100%;" type="text" name="High School Percentage" placeholder="High School Percentage" required="required" /><br>
+        <input style="width: 100%;" type="text" name="Undergraduate Degree Percentage" placeholder="Undergraduate Degree Percentage" required="required" /><br>
+        <input style="width: 100%;" type="text" name="Placement Eligibility Test Score" placeholder="Placement Eligibility Test Score" required="required" /><br>
+        <input style="width: 100%;" type="text" name="MBA Percentage" placeholder="MBA Percentage" required="required" /><br>
+        <div>
+        <label>Gender: </label>
+            <label for="Female">Female</label>
+        <input type="radio" id="Female" name="Type" value=0 required="True">
+        &nbsp;&nbsp;
+        <label for="Male">Male</label>
+        <input type="radio" id="Male" name="Type" value=1 required="True">
         </div>
 
-        <div class="column">
-          <div class="field">
-            <label class="label">Height (cm)</label>
-            <div class="control">
-              <input class="input" name="height_cm" type="number" min="0" , max="300" placeholder="Enter height in cm" value="{{ form_values['height_cm'] }}" required>
-            </div>
-            <p class="help"><a href="https://www.rapidtables.com/convert/length/height-converter.html" target="_blank">Converter: feet/inches to cm</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Cholesterol</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="cholesterol" value="0" required {% if form_values['cholesterol'] == '0' %} checked{% endif %}>
-            Normal
-            <span class="has-text-success">
-              <i class="fas fa-check"></i>
-            </span>
-          </label>
+        <div>
+        <label>UG Degree in: </label>
+            <label for="Science">BSc. or BTech.</label>
+        <input type="radio" id="Science" name="UG" value=1 required="True">
+        &nbsp;&nbsp;
+        <label for="Non">Others</label>
+        <input type="radio" id="Non" name="UG" value=0 required="True">
         </div>
 
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="cholesterol" value="1" required {% if form_values['cholesterol'] == '1' %} checked{% endif %}>
-            Above Normal
-            <span class="has-text-warning">
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-          </label>
+        <div>
+        <label>Work Experience: </label>
+            <label for="yes">Yes</label>
+        <input type="radio" id="yes" name="workex" value=1 required="True">
+        &nbsp;&nbsp;
+        <label for="No">No</label>
+        <input type="radio" id="No" name="workex" value=0 required="True">
         </div>
 
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="cholesterol" value="2" required {% if form_values['cholesterol'] == '2' %} checked{% endif %}>
-            Well Above Normal
-            <span class="has-text-danger">
-              <i class="fas fa-exclamation-circle"></i>
-            </span>
-          </label>
-        </div>
-      </div>
-  <div class="field">
-        <label class="label" >Physically active?</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="pa" value="0" required {% if form_values['pa'] == '0' %} checked{% endif %} >
-        Yes
-            <span class="has-text-success">
-              <i class="fas fa-check"></i>
-            </span>
-          </label>
-        </div>
- <div class="control">
-          <label class="radio">
-            <input type="radio" name="pa" value="1" required {% if form_values['pa'] == '1' %} checked{% endif %}>
-            No
-            <span class="has-text-warning">
-              <i class="fas fa-exclamation-circle"></i>
-            </span>
-          </label>
-        </div>
-      </div>
-    
- <div class="field" >
-        <label class="label">Smoking?</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="sm" value="0" required {% if form_values['sm'] == '0' %} checked{% endif %}>
-        Never
-            <span class="has-text-success">
-              <i class="fas fa-check"></i>
-            </span>
-          </label>
-        </div>
-    <div class="control">
-          <label class="radio">
-            <input type="radio" name="sm" value="1" required {% if form_values['sm'] == '1' %} checked{% endif %}>
-        Occasional
-            <span class="has-text-warning">
-              <i class="fas fa-exclamation-circle"></i>
-            </span>
-          </label>
-        </div>
-      <div class="control">
-          <label class="radio">
-            <input type="radio" name="sm" value="2" required {% if form_values['sm'] == '2' %} checked{% endif %}>
-            Regular
-            <span class="has-text-danger">
-              <i class="fas fa-exclamation-circle"></i>
-            </span>
-          </label>
-        </div>
-      </div>
-   
-    <div class="field">
-        <label class="label">
-Familial Hypertrophic Cardiomyopathy(Hereditary heart problems)</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="hm" value="0" required {% if form_values['hm'] == '0 %} checked{% endif %}>
-        Yes
-            <span class="has-text-danger">
-              <i class="fas fa-exclamation-circle"></i>
-            </span>
-          </label>
-        </div>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="hm" value="2" required {% if form_values['hm'] == '2' %} checked{% endif %}>
-          No
-            <span class="has-text-success">
-              <i class="fas fa-check  "></i>
-            </span>
-          </label>
-        </div>
-  </div>
-   
-      <div class="field is-grouped">
-        <div class="control">
-          <input type="submit" class="button is-link">
-        </div>
-      </div>
 
-      <footer class="footer">
-    <div class="content has-text-centered">
-      
 
-      <p class="disclaimer is-size-7">
-        <em>
-          * Note that this tool is for informational purposes only and does not
-            constitute medical advice. Please consult your doctor.
-        </em>
-      </p>
-    </div>
-   
-  </footer>
-    </div>
-  </div>
+        <button type="submit" class="btn btn-primary btn-block btn-small">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <label>Prediction:</label>&nbsp;
+   {{ prediction_text }}
+
+ </div>
 
 </body>
 </html>
